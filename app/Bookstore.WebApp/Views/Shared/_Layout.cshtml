@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Student Book Exchange</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 site-logo">
+                    <a href="@Url.Action("Index", "Home")"><img class="site-logo__image" src="@Url.Content("~/Content/images/logo.png")" /></a>
+                </div>
+                <div class="col-md-8">
+                    <nav class="navbar navbar-default">
+                        <ul class="nav navbar-nav">
+                            <li class="@(ViewBag.Title == "Home" ? "active" : "")">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="@(ViewBag.Title == "Books" ? "active" : "")">@Html.ActionLink("Books", "Index", "Books")</li>
+                            <li class="@(ViewBag.Title == "Submit" ? "active" : "")">@Html.ActionLink("Submit", "Submit", "Books")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Student Book Exchange</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

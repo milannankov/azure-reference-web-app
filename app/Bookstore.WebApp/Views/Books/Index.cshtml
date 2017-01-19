@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Bookstore.WebApp.Models.BookViewModel>
+
+@{
+    ViewBag.Title = "Books";
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/lightbox")
+}
+
+<h2>List of books on sale</h2>
+
+<div class="book-list container">
+    @foreach (var book in Model)
+    {
+        <div class="row book">
+            <div class="book__divider"></div>
+            <div class="col-md-2">
+                <div class="book__thumbnail">
+                    <a href="@book.ImageFullUrl" target="_blank" data-lightbox="@book.BookId" data-title="@book.BookTitle">
+                        <img class="book__thumbnail__image" src="@book.ImageThumbnailUrl" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="book__thumbnail">
+                    <div class="book__title">@book.BookTitle</div>
+                    <div class="book__description">@book.BookDescription</div>
+                    <p><a href="#" class="btn btn-primary btn-lg">Buy for $@book.Price</a></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
